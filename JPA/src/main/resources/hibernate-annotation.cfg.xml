@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--DataBase connection properties - Driver, URL, user-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/jpa?useSSL=false</property>
+        
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">toor</property>
+
+        <!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+
+        <!--Mapping with model class containing annotation-->
+        <mapping class="com.java_practice.hibernate.model.Employee"/>
+
+    </session-factory>
+</hibernate-configuration>

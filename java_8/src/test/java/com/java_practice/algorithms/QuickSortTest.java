@@ -49,7 +49,7 @@ public class QuickSortTest {
     @Test
     public void testSpecial() {
         QuickSort unit = new QuickSort();
-        int[] test = {5, 7, 1, 22, 4, 12, 17, 6, 3, 23};
+        int[] test = {5, 7, 1, 22, 4, 8, 3};
         unit.sort(test);
         if (!validate(test)) {
             fail("This should not happen");

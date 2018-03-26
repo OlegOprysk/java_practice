@@ -18,22 +18,22 @@ public class QuickSort {
     }
 
     private void quicksort(int low, int high) {
-        int leftSideArrayIndex = low;
-        int rightSideArrayIndex = high;
+        int left = low;
+        int right = high;
 
         int pivotElement = numbers[getPivotElementIndex(low, high)];
 
 //        Divide into two lists
-        while (leftSideArrayIndex <= rightSideArrayIndex) {
+        while (left <= right) {
 //            If the current value from the left list is smaller than the pivot
 //            element then get the next element from the list
-            while (numbers[leftSideArrayIndex] < pivotElement) {
-                leftSideArrayIndex++;
+            while (numbers[left] < pivotElement) {
+                left++;
             }
 //            If the current value from the right list is larger then the pivot
 //            element then get the next element from the right list
-            while (numbers[rightSideArrayIndex] > pivotElement) {
-                rightSideArrayIndex--;
+            while (numbers[right] > pivotElement) {
+                right--;
             }
 //            If we have found a value in the left list which is larger than
 //            the pivot element and if we have found a value in the right list
@@ -42,20 +42,21 @@ public class QuickSort {
 //            As we are done we can increase 'lefSideArrayIndex'
 //            and 'rightSideArrayIndex'
 
-            if (leftSideArrayIndex <= rightSideArrayIndex) {
-                exchange(leftSideArrayIndex, rightSideArrayIndex);
-                leftSideArrayIndex++;
-                rightSideArrayIndex--;
-            }
-
-//            Recursion
-            if (low < rightSideArrayIndex) {
-                quicksort(low, rightSideArrayIndex);
-            }
-            if (high > leftSideArrayIndex) {
-                quicksort(leftSideArrayIndex, high);
+            if (left <= right) {
+                exchange(left, right);
+                left++;
+                right--;
             }
         }
+
+//            Recursion
+        if (low < right) {
+            quicksort(low, right);
+        }
+        if (high > left) {
+            quicksort(left, high);
+        }
+
     }
 
     private void exchange(int i, int j) {
